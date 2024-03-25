@@ -14,6 +14,7 @@ export default function ExibirCadastroItens(props) {
                 <br/>
                 <TabelaItens 
                     listaItens={listaItens} 
+                    setListaItens={setListaItens}
                     setExibirTabelaItens={setExibirTabelaItens}
                 />
             </div>

@@ -1,8 +1,9 @@
 import { Button, Table } from "react-bootstrap";
 
 export default function TabelaItens(props){
-    function excluirItens(){
-    
+    function excluirItens(Nome_prod){
+        const novaListaItens = props.listaItens.filter(item => item.Nome_prod !== Nome_prod)
+        props.setListaItens(novaListaItens);
     };
 
 
@@ -58,14 +59,17 @@ export default function TabelaItens(props){
                                     <td>{item.Preco_prod}</td>
                                     <td>{item.Qtde_prod}</td>
                                     <td>
+
                                     <Button variant="primary" onClick={() => {
                                         
                                     }}
                                     >Alterar</Button>
+
                                     <Button variant="danger"onClick={() => {
-                                        
+                                        excluirItens(item.Nome_prod);
                                     }}
                                     >Excluir</Button>
+                                    
                                     </td>
                                 </tr>
                             )

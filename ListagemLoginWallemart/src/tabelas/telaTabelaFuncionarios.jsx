@@ -1,9 +1,11 @@
 import { Button, Table } from "react-bootstrap";
 
 export default function TabelaFuncionarios(props) {
-    function excluirFuncionarios(){
-    
+    function excluirFuncionarios(Nome_func){
+        const novaListaFuncionarios = props.listaFuncionarios.filter(funcionario => funcionario.Nome_func !== Nome_func)
+        props.setListaFuncionarios(novaListaFuncionarios);
     };
+
 
     const estiloFormulario = {
         width: '100%',            
@@ -69,14 +71,17 @@ export default function TabelaFuncionarios(props) {
                                     <td>{funcionario.Beneficios_func}</td>
                                     <td>{funcionario.Escolaridade_func}</td>
                                     <td>
+                                        
                                     <Button variant="primary" onClick={() => {
                                         
                                     }}
                                     >Alterar</Button>
+
                                     <Button variant="danger"onClick={() => {
-                                        
+                                        excluirFuncionarios(funcionario.Nome_func);
                                     }}
                                     >Excluir</Button>
+
                                     </td>
                                 </tr>
                             )

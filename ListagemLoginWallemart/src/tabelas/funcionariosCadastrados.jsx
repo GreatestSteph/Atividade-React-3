@@ -14,6 +14,7 @@ export default function ExibirCadastroFuncionarios(props) {
                 <br/>
                 <TabelaFuncionarios 
                     listaFuncionarios={listaFuncionarios} 
+                    setListaFuncionarios={setListaFuncionarios}
                     setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}
                 />
             </div>
