@@ -6,6 +6,8 @@ export default function ExibirCadastroFuncionarios(props) {
     
     const [exibirTabelaFuncionarios, setExibirTabelaFuncionarios] = useState(true);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
+    const [funcionarioSelecionado, setFuncionarioSelecionado] = useState({});
+    const [modoEdicaoFuncionario, setModoEdicaoFuncionario] = useState(false);
 
     if (exibirTabelaFuncionarios) {
         return (
@@ -16,6 +18,8 @@ export default function ExibirCadastroFuncionarios(props) {
                     listaFuncionarios={listaFuncionarios} 
                     setListaFuncionarios={setListaFuncionarios}
                     setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}
+                    setFuncionarioSelecionado={setFuncionarioSelecionado}
+                    setModoEdicaoFuncionario={setModoEdicaoFuncionario}
                 />
             </div>
         )
@@ -29,6 +33,9 @@ export default function ExibirCadastroFuncionarios(props) {
                     setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}
                     listaFuncionarios={listaFuncionarios}
                     setListaFuncionarios={setListaFuncionarios}
+                    funcionarioSelecionado={funcionarioSelecionado}
+                    setModoEdicaoFuncionario={setModoEdicaoFuncionario}
+                    modoEdicaoFuncionario={modoEdicaoFuncionario}
                 />
             </div>
         )

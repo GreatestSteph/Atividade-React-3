@@ -6,6 +6,11 @@ export default function TabelaItens(props){
         props.setListaItens(novaListaItens);
     };
 
+    function alterarItens(item){
+        props.setItemSelecionado(item);
+        props.setModoEdicaoItem(true);
+        props.setExibirTabelaItens(false);
+    };
 
     const estiloFormulario = {
         width: '100%',            
@@ -61,7 +66,7 @@ export default function TabelaItens(props){
                                     <td>
 
                                     <Button variant="primary" onClick={() => {
-                                        
+                                        alterarItens(item);
                                     }}
                                     >Alterar</Button>
 
@@ -81,6 +86,7 @@ export default function TabelaItens(props){
             <br/>
             <Button style={estiloMenu.botao} onClick={() => {
                 props.setExibirTabelaItens(false);
+                props.setModoEdicaoItem(false);
             }}>
                 Cadastrar Novo Item
             </Button>

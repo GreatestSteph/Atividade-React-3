@@ -6,6 +6,8 @@ export default function ExibirCadastroItens(props) {
     
     const [exibirTabelaItens, setExibirTabelaItens] = useState(true);
     const [listaItens, setListaItens] = useState([]);
+    const [itemSelecionado, setItemSelecionado] = useState({});
+    const [modoEdicaoItem, setModoEdicaoItem] = useState(false);
 
     if (exibirTabelaItens) {
         return (
@@ -16,6 +18,8 @@ export default function ExibirCadastroItens(props) {
                     listaItens={listaItens} 
                     setListaItens={setListaItens}
                     setExibirTabelaItens={setExibirTabelaItens}
+                    setItemSelecionado={setItemSelecionado}
+                    setModoEdicaoItem={setModoEdicaoItem}
                 />
             </div>
         )
@@ -29,6 +33,9 @@ export default function ExibirCadastroItens(props) {
                     setExibirTabelaItens={setExibirTabelaItens}
                     listaItens={listaItens}
                     setListaItens={setListaItens}
+                    itemSelecionado={itemSelecionado}
+                    setModoEdicaoItem={setModoEdicaoItem}
+                    modoEdicaoItem={modoEdicaoItem}
                 />
             </div>
         )

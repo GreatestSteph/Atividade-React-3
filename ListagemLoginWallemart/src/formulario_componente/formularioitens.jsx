@@ -41,7 +41,7 @@ export default function FormularioItens(props) {
       };
 
 
-    const [item, setItem] = useState({
+    const [item, setItem] = useState(props.modoEdicaoItem ? props.itemSelecionado : {
         Nome_prod: "",
         Data_fab: "",
         Data_ven: "",
@@ -60,7 +60,13 @@ export default function FormularioItens(props) {
             setValidado(true);
         } else {
             setValidado(false);
-            props.setListaItens([...props.listaItens, item]);
+            if (!props.modoEdicaoItem){
+                props.setListaItens([...props.listaItens, item]);
+            }
+            else{
+                const novaListaItens = props.listaItens.filter(item => item.Nome_prod !== props.itemSelecionado.Nome_prod);
+                props.setListaItens([...novaListaItens, item]);   
+            }
             props.setExibirTabelaItens(true);   
         }
     }
@@ -122,10 +128,13 @@ export default function FormularioItens(props) {
                 </Form.Group>
             </Row>
             <br/>
-            <Button type="submit" style={estiloMenu.botao}>Enviar</Button>
+            <Button type="submit" style={estiloMenu.botao}> {props.modoEdicaoItem ? "Salvar" : "Enviar"}</Button> 
+
             <Button style={estiloMenu.botaovoltar} onClick={() => {
+                props.setModoEdicaoItem(false);
                 props.setExibirTabelaItens(true);
             }}>Voltar</Button>
+
         </Form>
         </div> 
     );

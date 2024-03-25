@@ -6,6 +6,11 @@ export default function TabelaFuncionarios(props) {
         props.setListaFuncionarios(novaListaFuncionarios);
     };
 
+    function alterarFuncionarios(funcionario){
+        props.setFuncionarioSelecionado(funcionario);
+        props.setModoEdicaoFuncionario(true);
+        props.setExibirTabelaFuncionarios(false);
+    };
 
     const estiloFormulario = {
         width: '100%',            
@@ -73,7 +78,7 @@ export default function TabelaFuncionarios(props) {
                                     <td>
                                         
                                     <Button variant="primary" onClick={() => {
-                                        
+                                        alterarFuncionarios(funcionario);
                                     }}
                                     >Alterar</Button>
 
@@ -93,6 +98,7 @@ export default function TabelaFuncionarios(props) {
             <br/>
             <Button style={estiloMenu.botao} onClick={() => {
                 props.setExibirTabelaFuncionarios(false);
+                props.setModoEdicaoFuncionario(false);
             }}>
                 Cadastrar Novo Funcionário
             </Button>

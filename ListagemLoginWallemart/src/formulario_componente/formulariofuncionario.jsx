@@ -40,7 +40,7 @@ export default function FormularioFuncionarios(props) {
         },
     };
 
-    const [funcionario, setFuncionario] = useState({
+    const [funcionario, setFuncionario] = useState(props.modoEdicaoFuncionario ? props.funcionarioSelecionado : {
         Nome_func: "",
         Data_nas_func: "",
         Genero_func: "",
@@ -65,7 +65,13 @@ export default function FormularioFuncionarios(props) {
             setValidado(true);
         } else {
             setValidado(false);
-            props.setListaFuncionarios([...props.listaFuncionarios, funcionario]);
+            if (!props.modoEdicaoFuncionario) {
+                props.setListaFuncionarios([...props.listaFuncionarios, funcionario]);
+            }
+            else{
+                const novaListaFuncionarios = props.listaFuncionarios.filter(funcionario => funcionario.Nome_func !== props.funcionarioSelecionado.Nome_func);
+                props.setListaFuncionarios([...novaListaFuncionarios, funcionario]);   
+            }
             props.setExibirTabelaFuncionarios(true);   
         }
     }
@@ -161,10 +167,13 @@ export default function FormularioFuncionarios(props) {
                 </Form.Group>
             </Row>
             <br/>
-            <Button type="submit" style={estiloMenu.botao}>Enviar</Button>
+            <Button type="submit" style={estiloMenu.botao}> {props.modoEdicaoFuncionario ? "Salvar" : "Enviar"}</Button>
+
             <Button style={estiloMenu.botaovoltar} onClick={() => {
+                props.setModoEdicaoFuncionario(false);
                 props.setExibirTabelaFuncionarios(true);
             }}>Voltar</Button>
+
         </Form>
         </div>       
     );
